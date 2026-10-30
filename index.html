@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#432012">
+<title>WALAC Museo | Lagarto Protector</title>
+<style>
+:root{--ink:#421f12;--rust:#913b1d;--gold:#e8a900;--cream:#fff0d8;--paper:#f3dfc0}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#21120c;color:#fff;font-family:Arial,Helvetica,sans-serif}body{display:flex;flex-direction:column;align-items:center;padding:12px 12px 28px}
+.topbar{width:min(100%,1536px);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 auto 10px;color:#f6dfbd}.topbar strong{font-size:13px;letter-spacing:.16em;text-transform:uppercase}.top-actions{display:flex;gap:8px;align-items:center}.top-link,.mode-toggle{border:1px solid rgba(246,220,181,.45);background:#4a2617;color:#ffe6c4;border-radius:999px;padding:9px 15px;font-weight:700;font-size:12px;cursor:pointer;text-decoration:none}.top-link:hover,.mode-toggle:hover{background:#68402a}
+.museum-stage{position:relative;width:min(100%,1536px);aspect-ratio:3/2;overflow:hidden;container-type:inline-size;isolation:isolate;box-shadow:0 22px 70px rgba(0,0,0,.5);border-radius:8px}
+.stage-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.stand-logo{position:absolute;z-index:1;left:44.1%;top:83.2%;width:14.4%;height:14.6%;display:flex;align-items:center;justify-content:center;border-radius:18px;background:#f7e8d0;border:3px solid #efc487;box-shadow:0 5px 14px rgba(0,0,0,.45);overflow:hidden}.stand-logo img{width:88%;height:88%;object-fit:contain}
+.screen-surface{position:absolute;left:7%;top:12.5%;width:86.6%;height:58.3%;overflow:hidden;clip-path:polygon(8.6% 0,91.9% 0,100% 100%,0 100%);background:#421f12;transform:translateZ(0)}
+.screen-content{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;container-type:inline-size;background:radial-gradient(circle at 75% 9%,#8d3f18 0,#6a2c14 34%,#3d170b 78%)}
+.screen-content:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;background-image:linear-gradient(135deg,transparent 0 46%,rgba(245,180,70,.16) 46.2% 47%,transparent 47.2%),linear-gradient(45deg,transparent 0 55%,rgba(245,180,70,.11) 55.2% 56%,transparent 56.2%);background-size:42px 42px,42px 42px}
+.home-view{position:absolute;inset:0}
+.hero-art{position:absolute;right:0;top:0;width:60%;height:58%;object-fit:cover;object-position:left top;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 8%,#000 26%),linear-gradient(180deg,#000 85%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 8%,#000 26%),linear-gradient(180deg,#000 85%,transparent 100%);mask-composite:intersect}
+.brand-plaque{position:absolute;z-index:3;left:9%;top:4.8%;height:14%;display:flex;align-items:center;justify-content:flex-start}.brand-plaque img{height:100%;width:auto;object-fit:contain;object-position:left center}
+.hero-copy{position:absolute;z-index:2;left:6%;top:22%;width:42%;color:var(--cream);text-align:center}
+.eyebrow{font-size:2.6cqw;letter-spacing:.16em;font-weight:700;margin:0;color:#fff0d8}
+.hero-title{font-family:'Arial Black','Arial',Helvetica,sans-serif;font-size:5.4cqw;line-height:1.02;letter-spacing:.01em;margin:0;color:#fff0d8;font-weight:900;text-shadow:0 3px 9px rgba(0,0,0,.4);white-space:nowrap}
+.hero-subtitle{font-family:Georgia,'Times New Roman',serif;font-size:1.75cqw;line-height:1.28;margin:1.2cqw auto 0;max-width:80%;color:#f3d8b6;text-shadow:0 2px 5px rgba(0,0,0,.45)}
+.gold-line{width:5.6cqw;height:.36cqw;min-height:3px;border-radius:10px;background:var(--gold);margin:1.3cqw auto 0}
+.feature-grid{position:absolute;z-index:3;left:6.1%;right:6.1%;top:57%;height:40.5%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.9%}
+.feature-card{min-width:0;height:100%;padding:0;border:2px solid #efc487;border-radius:2.1cqw;background:#f3dfc0;color:var(--ink);overflow:hidden;cursor:pointer;text-align:left;display:flex;flex-direction:column;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .18s ease,box-shadow .18s ease}
+.feature-card:hover,.feature-card:focus-visible{transform:translateY(-.5cqw);box-shadow:0 12px 20px rgba(0,0,0,.38);outline:3px solid #ffc34d;outline-offset:2px}
+.card-art{flex:0 0 auto;aspect-ratio:354/104;width:100%;overflow:hidden;background:#efd9b6;display:block}.card-art img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.card-copy{position:relative;flex:1;min-height:0;margin:-.5cqw 2.2% 2.4%;border-radius:1.6cqw;background:linear-gradient(180deg,#4f1f10,#3f180c);color:#fff0d8;padding:1.2cqw 21% .8cqw 6%;box-shadow:inset 0 1px 0 rgba(255,225,185,.14),0 -2px 6px rgba(60,25,10,.25);display:block}
+.card-copy h2{font-size:1.45cqw;line-height:1.1;margin:0 0 .6cqw;text-transform:uppercase}.card-copy p{font-size:1.2cqw;line-height:1.25;margin:0;color:#f3ddc1}
+.card-arrow{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:3.5cqw;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:#f09a1c;color:#3f180c}.card-arrow svg{width:46%;height:46%}
+.content-view{display:none;position:absolute;inset:0;padding:2.6% 8.5% 0;color:#fff0d8;background:linear-gradient(120deg,rgba(61,27,13,.99),rgba(95,40,17,.97))}.content-view.active{display:flex;flex-direction:column}
+.view-top{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(238,185,99,.4);padding-bottom:1%;flex:0 0 auto}
+.view-brand{display:flex;align-items:center;gap:1.5cqw;font-size:1.5cqw;letter-spacing:.17em;text-transform:uppercase;color:#ffe6c4;font-weight:800}.view-brand img{width:4.5cqw;height:4.1cqw;object-fit:contain;flex:0 0 auto}
+.back-button{border:1px solid #e8ab4d;background:rgba(39,17,9,.3);color:#ffe6c1;border-radius:999px;padding:.8cqw 1.5cqw;font-size:1.1cqw;font-weight:800;cursor:pointer;white-space:nowrap}.back-button:hover{background:#e8ab4d;color:#421f12}
+.view-main{flex:1;min-height:0;overflow:auto;padding:1.2% 0 2cqw;margin-right:9.5cqw;scrollbar-width:thin;scrollbar-color:#d28d39 transparent}
+.section-kicker{color:#f2b44b;font-size:1.15cqw;text-transform:uppercase;letter-spacing:.17em;font-weight:800;margin:0 0 .8cqw}
+.section-title{font-family:Georgia,'Times New Roman',serif;font-size:3.1cqw;line-height:1.02;margin:0 0 1cqw;color:#fff0d8}
+.lead{font-size:1.32cqw;line-height:1.4;color:#f3ddc1;margin:0 0 1.2cqw}
+.two-columns{display:grid;grid-template-columns:1.1fr .9fr;gap:2.3%;align-items:stretch}
+.info-panel{background:rgba(255,235,202,.1);border:1px solid rgba(237,177,84,.52);border-radius:1.5cqw;padding:1.3cqw 1.6cqw}.info-panel h3{font-size:1.15cqw;color:#f4bd63;margin:0 0 .5cqw;text-transform:uppercase}.info-panel p{font-size:1.1cqw;line-height:1.36;color:#f8e5ca;margin:0 0 .9cqw}
+.photo-panel{border-radius:1.5cqw;overflow:hidden;position:relative;min-height:25cqw;background:#6b351d;border:1px solid rgba(237,177,84,.52)}.photo-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.photo-stack{display:grid;grid-template-rows:1fr 1fr;gap:1.2cqw;min-height:25cqw}.photo-stack .photo-panel{min-height:0}
+.photo-caption{position:absolute;left:0;right:0;bottom:0;padding:2.3cqw 2cqw 1.2cqw;background:linear-gradient(transparent,rgba(32,14,7,.95));font-size:1.05cqw;color:#ffe7c4}
+.highlight{margin-top:1.1cqw;padding:1.1cqw 1.3cqw;border-left:4px solid var(--gold);background:rgba(255,239,211,.09);border-radius:.6cqw}.highlight strong{display:block;color:#f5bd59;font-size:1.05cqw;text-transform:uppercase;margin-bottom:.35cqw}.highlight p{margin:0;color:#fff0d8;font-size:1.1cqw;line-height:1.35}
+.mascot{position:absolute;right:4.5%;bottom:0;width:12cqw;z-index:2;pointer-events:none;display:flex;flex-direction:column;align-items:center}.mascot img{width:8.6cqw;height:auto;display:block;filter:drop-shadow(0 .6cqw .8cqw rgba(0,0,0,.35))}
+.mascot-bubble{margin:0 0 1.1cqw;background:#fff0d8;color:#4a2415;font-weight:700;font-size:1.02cqw;line-height:1.25;text-align:center;padding:.7cqw .9cqw;border-radius:1.2cqw;box-shadow:0 4px 10px rgba(0,0,0,.28)}
+/* Reto del Guardián */
+.quiz-card{background:rgba(255,235,202,.1);border:1px solid rgba(237,177,84,.52);border-radius:1.5cqw;padding:1.5cqw 1.8cqw}
+.quiz-progress{display:flex;align-items:center;gap:1cqw;margin-bottom:1cqw;font-size:1.05cqw;color:#f4bd63;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.quiz-bar{flex:1;height:.7cqw;min-height:5px;border-radius:10px;background:rgba(255,239,211,.18);overflow:hidden}.quiz-bar span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s ease}
+.quiz-question{font-family:Georgia,'Times New Roman',serif;font-size:1.9cqw;line-height:1.22;margin:0 0 1.1cqw;color:#fff0d8}
+.quiz-options{display:grid;grid-template-columns:repeat(3,1fr);gap:.9cqw}
+.quiz-option{border:1px solid #e7b25f;border-radius:1cqw;padding:1.1cqw .8cqw;background:rgba(255,239,211,.1);color:#fff0d8;font-weight:800;font-size:1.15cqw;line-height:1.25;cursor:pointer;text-align:center}
+.quiz-option:hover:not(:disabled){background:#e8a33a;color:#421f12}
+.quiz-option.correct{background:#4f8a3c;border-color:#9fd38a;color:#fff}.quiz-option.wrong{background:#8d2c1b;border-color:#e08b7a;color:#fff}.quiz-option:disabled{cursor:default}
+.quiz-feedback{min-height:4.2cqw;margin-top:1.1cqw;padding:.9cqw 1.2cqw;background:rgba(255,239,211,.1);border-radius:1cqw;color:#f7e4c7;font-size:1.1cqw;line-height:1.35}
+.quiz-actions{display:flex;justify-content:flex-end;margin-top:1cqw}
+.quiz-next{border:0;border-radius:999px;background:#f09a1c;color:#3f180c;font-weight:900;font-size:1.15cqw;padding:.9cqw 2cqw;cursor:pointer}.quiz-next[hidden]{display:none}.quiz-next:hover{background:#ffc34d}
+.quiz-result{text-align:center;padding:1cqw 0}.quiz-result .score{font-family:Georgia,serif;font-size:4.4cqw;color:#f5bd59;margin:0}.quiz-result h3{font-size:1.9cqw;margin:.4cqw 0 .8cqw;color:#fff0d8}.quiz-result p{font-size:1.25cqw;line-height:1.4;color:#f3ddc1;margin:0 auto 1.2cqw;max-width:75%}
+.stage-caption{width:min(100%,1536px);display:flex;justify-content:space-between;gap:10px;color:#d6b995;font-size:11px;padding:9px 3px 0}
+.screen-mode .stage-bg,.screen-mode .stand-logo{display:none}.screen-mode .screen-surface{position:relative;left:auto;top:auto;width:100%;height:100%;clip-path:none;border:10px solid #171717;border-radius:18px;box-shadow:0 0 0 2px #4c4c4c,0 15px 35px rgba(0,0,0,.5)}.screen-mode .screen-content{border-radius:7px}
+@media(max-width:700px){body{padding:6px}.topbar{align-items:flex-start}.topbar strong{font-size:10px}.top-link,.mode-toggle{font-size:10px;padding:7px 9px}.stand-logo{display:none}.view-main{margin-right:0}.mascot{display:none}.view-brand{font-size:2cqw}.back-button{font-size:1.5cqw}.section-kicker{font-size:1.5cqw}.section-title{font-size:4cqw}.lead{font-size:1.7cqw}.info-panel h3,.info-panel p,.highlight strong,.highlight p,.photo-caption{font-size:1.5cqw}.two-columns{grid-template-columns:1fr}.photo-panel,.photo-stack{min-height:30cqw}.quiz-progress,.quiz-feedback,.quiz-option,.quiz-next{font-size:1.5cqw}.quiz-question{font-size:2.4cqw}.quiz-result p{font-size:1.6cqw;max-width:95%}.stage-caption{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head>
+<body>
+<div class="topbar"><strong>WALAC Museo · Lagarto Protector</strong><div class="top-actions"><a class="top-link" href="../index.html">← Inicio</a><button class="mode-toggle" id="modeToggle" type="button">Ver pantalla táctil</button></div></div>
+<main class="museum-stage" id="museumStage" aria-label="Tótem digital de WALAC Museo">
+<img class="stage-bg" src="museo-totem.png" alt="Tótem interactivo en una sala de museo">
+<div class="stand-logo"><img src="logo-walac-transparent.png" alt="WALAC — Descubre el misterio de tus raíces"></div>
+<section class="screen-surface" aria-label="Pantalla táctil interactiva"><div class="screen-content">
+
+<section class="home-view" id="homeView">
+<img class="hero-art" src="lagarto-hero.png" alt="Lagarto protector sobre muros de piedra con motivos geométricos">
+<div class="brand-plaque"><img src="imagotipo-walac.png" alt="Logo WALAC"></div>
+<div class="hero-copy"><p class="eyebrow">LAGARTO</p><h1 class="hero-title">PROTECTOR</h1><p class="hero-subtitle">Descubre al guardián de nuestras raíces.</p><div class="gold-line"></div></div>
+<div class="feature-grid">
+<button class="feature-card" data-open="who"><span class="card-art"><img src="lagarto-guardian.png" alt="El lagarto guardián"></span><span class="card-copy"><h2>¿Quién es el guardián?</h2><p>Conoce al lagarto protector y su importancia en la cultura Tallán.</p><span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path d="M9 4.5 16.5 12 9 19.5"/></svg></span></span></button>
+<button class="feature-card" data-open="culture"><span class="card-art"><img src="lagarto-vasija.png" alt="Vasija con lagarto en relieve"></span><span class="card-copy"><h2>El lagarto en la cultura Tallán</h2><p>Explora su presencia en el arte y la iconografía prehispánica.</p><span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path d="M9 4.5 16.5 12 9 19.5"/></svg></span></span></button>
+<button class="feature-card" data-open="quiz"><span class="card-art"><img src="lagarto-relieve.png" alt="Relieve de lagarto con motivos geométricos"></span><span class="card-copy"><h2>El reto del guardián</h2><p>Pon a prueba tus conocimientos con un desafío interactivo.</p><span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path d="M9 4.5 16.5 12 9 19.5"/></svg></span></span></button>
+</div></section>
+
+<section class="content-view" id="whoView"><div class="view-top"><div class="view-brand"><img src="imagotipo-walac.png" alt="Logo WALAC"><span>WALAC MUSEO · LAGARTO PROTECTOR</span></div><button class="back-button" data-home>← MENÚ PRINCIPAL</button></div>
+<div class="view-main"><p class="section-kicker">01 · ¿QUIÉN ES EL GUARDIÁN?</p><h2 class="section-title">El guardián de WALAC</h2>
+<div class="two-columns"><div class="info-panel"><p class="lead">El lagarto es el personaje que representa la protección y la conexión con nuestras raíces dentro de WALAC Museo.</p><p>Inspirado en la fauna y la iconografía ancestral, este guardián acompaña a los exploradores en el descubrimiento de la cultura Tallán.</p><div class="highlight"><strong>Protección y raíces</strong><p>El guardián te acompaña en cada sala para que descubras el misterio de tus raíces.</p></div></div>
+<div class="photo-panel"><img src="lagarto-hero.png" alt="El lagarto guardián de WALAC"><div class="photo-caption">El lagarto protector · Personaje de WALAC Museo</div></div></div></div>
+<div class="mascot"><div class="mascot-bubble">¡Soy tu guía en este viaje!</div><img src="mascota-walac.png" alt="Mascota exploradora de WALAC"></div></section>
+
+<section class="content-view" id="cultureView"><div class="view-top"><div class="view-brand"><img src="imagotipo-walac.png" alt="Logo WALAC"><span>WALAC MUSEO · CULTURA TALLÁN</span></div><button class="back-button" data-home>← MENÚ PRINCIPAL</button></div>
+<div class="view-main"><p class="section-kicker">02 · EL LAGARTO EN LA CULTURA TALLÁN</p><h2 class="section-title">Huellas de una cultura</h2>
+<div class="two-columns"><div><div class="info-panel"><p class="lead">Los animales y la naturaleza estuvieron presentes en las expresiones artísticas de las sociedades prehispánicas.</p><p>A través de representaciones y motivos geométricos, podemos explorar cómo los antiguos habitantes de la región expresaban su relación con el entorno.</p></div>
+<div class="highlight"><strong>Nota importante</strong><p>El lagarto protector es una figura simbólica de la propuesta de WALAC Museo; no representa una deidad Tallán históricamente documentada.</p></div></div>
+<div class="photo-stack"><div class="photo-panel"><img src="lagarto-vasija.png" alt="Vasija decorada con un lagarto en relieve"><div class="photo-caption">Motivos y fauna en el arte</div></div><div class="photo-panel"><img src="lagarto-relieve.png" alt="Relieve de lagarto con motivos geométricos"><div class="photo-caption">Iconografía y formas geométricas</div></div></div></div></div>
+<div class="mascot"><div class="mascot-bubble">¡Mira cuántos detalles!</div><img src="mascota-walac.png" alt="Mascota exploradora de WALAC"></div></section>
+
+<section class="content-view" id="quizView"><div class="view-top"><div class="view-brand"><img src="imagotipo-walac.png" alt="Logo WALAC"><span>WALAC MUSEO · EL RETO</span></div><button class="back-button" data-home>← MENÚ PRINCIPAL</button></div>
+<div class="view-main"><p class="section-kicker">03 · EL RETO DEL GUARDIÁN</p><h2 class="section-title">¡Demuestra cuánto sabes!</h2>
+<div class="quiz-card" id="quizIntro"><p class="lead">¿Estás listo para superar el desafío? Responde preguntas sobre la cultura Tallán, descubre nuevos datos y demuestra tus conocimientos. ¡Cada respuesta te acerca a convertirte en un verdadero explorador de WALAC Museo!</p><div class="quiz-actions" style="justify-content:flex-start"><button class="quiz-next" id="quizStart" type="button">¡Empezar el reto!</button></div></div>
+<div class="quiz-card" id="quizPlay" hidden><div class="quiz-progress"><span id="quizCount">Pregunta 1 de 4</span><div class="quiz-bar"><span id="quizBar"></span></div></div><h3 class="quiz-question" id="quizQuestion"></h3><div class="quiz-options" id="quizOptions"></div><div class="quiz-feedback" id="quizFeedback" aria-live="polite">Elige una respuesta.</div><div class="quiz-actions"><button class="quiz-next" id="quizNext" type="button" hidden>Siguiente →</button></div></div>
+<div class="quiz-card" id="quizEnd" hidden><div class="quiz-result"><p class="score" id="quizScore">0/4</p><h3 id="quizRank"></h3><p id="quizMsg"></p><button class="quiz-next" id="quizRestart" type="button">Intentar de nuevo</button></div></div>
+</div>
+<div class="mascot"><div class="mascot-bubble" id="quizBubble">¡Tú puedes, explorador!</div><img src="mascota-walac.png" alt="Mascota exploradora de WALAC"></div></section>
+
+</div></section></main>
+<div class="stage-caption"><span>Experiencia interactiva · Lagarto Protector</span><span>Selecciona una tarjeta para explorar y vuelve al menú principal.</span></div>
+<script>
+(()=>{
+const stage=document.getElementById('museumStage'),toggle=document.getElementById('modeToggle'),home=document.getElementById('homeView');
+const views={who:document.getElementById('whoView'),culture:document.getElementById('cultureView'),quiz:document.getElementById('quizView')};
+function showHome(){Object.values(views).forEach(v=>v.classList.remove('active'));home.style.display='block'}
+function openView(n){home.style.display='none';Object.values(views).forEach(v=>v.classList.remove('active'));views[n]?.classList.add('active');if(n==='quiz')resetQuiz()}
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openView(b.dataset.open)));
+document.querySelectorAll('[data-home]').forEach(b=>b.addEventListener('click',showHome));
+toggle.addEventListener('click',()=>{stage.classList.toggle('screen-mode');toggle.textContent=stage.classList.contains('screen-mode')?'Ver tótem completo':'Ver pantalla táctil'});
+
+/* Reto del Guardián */
+const Q=[
+{q:'¿En qué región del Perú se desarrolló la cultura Tallán?',o:['Cusco','Piura','Arequipa'],a:1,e:'La cultura Tallán se desarrolló en la costa norte del Perú, en la región de Piura.'},
+{q:'¿Qué representa el lagarto protector en WALAC Museo?',o:['Una deidad Tallán documentada','El personaje guardián del museo','Un antiguo gobernante'],a:1,e:'Es una figura simbólica de WALAC Museo: representa la protección y la conexión con nuestras raíces.'},
+{q:'¿Qué cultivo fue importante en las sociedades prehispánicas de los Andes?',o:['El trigo','El arroz','El maíz'],a:2,e:'El maíz fue un alimento importante y estuvo ligado a las prácticas agrícolas prehispánicas. El trigo y el arroz llegaron después.'},
+{q:'¿Cómo expresaban su relación con el entorno las sociedades prehispánicas?',o:['Con motivos y representaciones en su arte','Solo con escritura alfabética','No dejaron expresiones artísticas'],a:0,e:'Plasmaron animales, naturaleza y motivos geométricos en su arte, como la cerámica.'}
+];
+const $=id=>document.getElementById(id);let i=0,score=0,locked=false;
+function resetQuiz(){i=0;score=0;$('quizIntro').hidden=false;$('quizPlay').hidden=true;$('quizEnd').hidden=true;$('quizBubble').textContent='¡Tú puedes, explorador!'}
+function show(){locked=false;const d=Q[i];$('quizCount').textContent='Pregunta '+(i+1)+' de '+Q.length;$('quizBar').style.width=(i/Q.length*100)+'%';$('quizQuestion').textContent=d.q;$('quizFeedback').textContent='Elige una respuesta.';$('quizNext').hidden=true;
+const box=$('quizOptions');box.innerHTML='';d.o.forEach((t,k)=>{const b=document.createElement('button');b.className='quiz-option';b.type='button';b.textContent=t;b.addEventListener('click',()=>pick(k,b));box.appendChild(b)})}
+function pick(k,btn){if(locked)return;locked=true;const d=Q[i],btns=[...$('quizOptions').children];btns.forEach(b=>b.disabled=true);btns[d.a].classList.add('correct');
+if(k===d.a){score++;$('quizFeedback').textContent='¡Correcto! '+d.e;$('quizBubble').textContent='¡Muy bien!'}else{btn.classList.add('wrong');$('quizFeedback').textContent='Casi. '+d.e;$('quizBubble').textContent='¡Sigue explorando!'}
+$('quizNext').textContent=i===Q.length-1?'Ver resultado →':'Siguiente →';$('quizNext').hidden=false}
+$('quizStart').addEventListener('click',()=>{$('quizIntro').hidden=true;$('quizPlay').hidden=false;show()});
+$('quizNext').addEventListener('click',()=>{i++;if(i<Q.length){show()}else{end()}});
+function end(){$('quizPlay').hidden=true;$('quizEnd').hidden=false;$('quizScore').textContent=score+'/'+Q.length;
+const r=score===Q.length?['Explorador de WALAC','¡Respondiste todo bien! El guardián te nombra explorador de WALAC Museo.']:score>=2?['Explorador en camino','¡Buen trabajo! Sigue descubriendo la cultura Tallán para convertirte en un gran explorador.']:['Explorador novato','Cada visita te enseña algo nuevo. ¡Vuelve a intentarlo con el guardián!'];
+$('quizRank').textContent=r[0];$('quizMsg').textContent=r[1];$('quizBubble').textContent='¡Gracias por jugar!'}
+$('quizRestart').addEventListener('click',()=>{resetQuiz();$('quizIntro').hidden=true;$('quizPlay').hidden=false;show()});
+})();
+</script></body></html>

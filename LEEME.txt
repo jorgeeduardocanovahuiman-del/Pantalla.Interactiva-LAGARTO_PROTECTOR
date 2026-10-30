@@ -1,0 +1,8 @@
+WALAC MUSEO — LAGARTO PROTECTOR
+
+PUBLICACIÓN:
+1. Descomprime este ZIP.
+2. Sube la carpeta Lagarto-Protector completa a tu repositorio (HTML e imágenes juntos).
+3. Abre Lagarto-Protector/index.html desde GitHub Pages.
+
+El enlace superior "← Inicio" vuelve al index.html de la carpeta principal del repositorio.
